@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS offers(
 '''
 
 
-def commit_in_db(query: str, params: Any = None):
+def commit_in_db(query: str, params: Tuple = ()):
     try:
         with sqlite3.connect('db.sqlite3') as conn:
             cursor = conn.cursor()
@@ -54,10 +54,12 @@ def commit_in_db(query: str, params: Any = None):
     except Exception as ex:
         print(f'Dogodila se greska {ex}')
 
-def fetchall_from_db(query: str, params: Any = None):
+def fetchall_from_db(query: str, params: Tuple = ()):
     try:
         with sqlite3.connect('db.sqlite3') as conn:
             cursor = conn.cursor()
+            # params -> ako ima samo jednu vrijednost (npr id) -> (1,)
+            # params -> ako ima vise vrijednosti (npr objekt) -> (1, 2, 3) ili (1, 2, 3,)
             cursor.execute(query, params)
             return cursor.fetchall()
     except Exception as ex:
