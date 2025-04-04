@@ -25,12 +25,12 @@ CREATE TABLE IF NOT EXISTS product_items(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     description TEXT NULL,
-    quantity FLOAT NOT NULL
+    quantity FLOAT NOT NULL,
 
     offer_id INTEGER NOT NULL,
-    FOREIGN KEY (offer_id) REFERENCES offers (id),
-
     product_id INTEGER NOT NULL,
+
+    FOREIGN KEY (offer_id) REFERENCES offers (id),
     FOREIGN KEY (product_id) REFERENCES products (id)
 );
 '''
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS offers(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     offer_number INTEGER NOT NULL,
     date TEXT NOT NULL,
-    tax FLOAT NOT NULL,
+    tax FLOAT NOT NULL
 );
 '''
 
