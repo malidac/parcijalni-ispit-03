@@ -30,6 +30,8 @@ class ProductItem:
         self.quantity = quantity
         self.item_total = 0.00
 
+        self.calculate_item_total()
+
     def calculate_item_total(self):
         if self.product != None:
             self.item_total = self.product.price * self.quantity

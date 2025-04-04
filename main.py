@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from database import create_db
 
 OFFERS_FILE = "offers.json"
 PRODUCTS_FILE = "products.json"
@@ -198,4 +199,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    create_db()
+    # main()
